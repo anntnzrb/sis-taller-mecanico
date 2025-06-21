@@ -53,6 +53,16 @@ header {
     transition: box-shadow 0.15s ease-in-out;
 }
 
+/* Ensure card buttons are positioned correctly */
+.card .position-relative {
+    position: relative !important;
+}
+
+.card .position-absolute {
+    position: absolute !important;
+    z-index: 10;
+}
+
 .card:hover {
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
 }
