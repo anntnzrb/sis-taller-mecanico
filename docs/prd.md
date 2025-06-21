@@ -9,14 +9,13 @@ fecha: "2025"
 ## Descripción General del Proyecto
 Desarrollar una aplicación web completa para un **{{ tipo_tienda }}** usando el framework Django con integración a base de datos PostgreSQL, implementando el patrón de diseño MVC (Modelo-Vista-Controlador) en Python con operaciones CRUD completas para múltiples entidades de negocio.
 
-**IMPORTANTE: Este documento debe ser seguido estrictamente. Para el desarrollo se debe usar Docker como herramienta para evitar instalar dependencias en el entorno local, pero el proyecto final entregable no requiere Docker para su funcionamiento. No se requiere la implementación de componentes adicionales como nginx, servidores web externos, o cualquier tecnología no especificada explícitamente en este PRD.**
+**IMPORTANTE: Este documento debe ser seguido estrictamente.**
 
 ## Stack Tecnológico
 - **Python**: 3.13
 - **Framework**: Django 5.2.2
 - **Gestor de Paquetes**: UV (para manejo de dependencias y entornos virtuales)
 - **Base de Datos**: PostgreSQL
-- **Herramienta de Desarrollo**: Docker y Docker Compose (solo para desarrollo, evita instalación local)
 - **Frontend**: HTML, CSS/Bootstrap, JavaScript
 - **Adaptador de Base de Datos**: psycopg2
 
@@ -218,45 +217,14 @@ Navegación estándar en todas las páginas (según diseños oficiales):
 - Validación apropiada y manejo de errores
 - Manejo de carga de archivos para imágenes
 
-## Configuración de Dependencias y Entorno de Desarrollo
-**Docker como Herramienta de Desarrollo (no contamina entorno local):**
-
-Durante el desarrollo, usar Docker como interfaz para evitar instalar dependencias localmente:
-```bash
-# Todos los comandos de desarrollo se ejecutan a través de Docker:
-docker-compose exec web uv add django==5.2.2
-docker-compose exec web uv add psycopg2-binary  # Librería específica requerida para PostgreSQL
-```
-
-**Nota**: El proyecto final entregable funciona sin Docker - Django estándar con PostgreSQL.
-
-**Tecnologías mínimas requeridas**: HTML, CSS o Bootstrap, JavaScript (Opcional), Django, Python, PostgreSQL.
-
-## Configuración de Migración y Base de Datos
-**Durante el desarrollo (usando Docker como interfaz):**
-1. **Levantar servicios con Docker Compose**: PostgreSQL y Django en contenedores para desarrollo
-2. La base de datos PostgreSQL `practicatpe2` se configura en el contenedor de desarrollo
-3. **Ejecutar comandos de desarrollo a través de Docker**: 
-   ```bash
-   docker-compose exec web uv run python manage.py makemigrations
-   docker-compose exec web uv run python manage.py migrate
-   ```
-4. Asegurar conectividad entre contenedores durante desarrollo
-5. **Requisito para desarrollo**: Tener instalado Docker y Docker Compose
-
-**Para el proyecto final entregable:**
-- Configuración estándar de Django con PostgreSQL
-- Base de datos PostgreSQL `practicatpe2` con credenciales especificadas
-- Aplicación Django funcional sin dependencia de Docker
+## Configuración de Desarrollo
+Ver sección de configuración de dependencias y migración de base de datos más adelante en este documento.
 
 ## Especificaciones de Acceso y Seguridad
 
-**IMPORTANTE - APLICACIÓN SIN RESTRICCIONES DE ACCESO:**
-- **NO implementar sistema de usuarios, roles, permisos o autenticación**
-- **NO hay administradores, usuarios finales o diferentes tipos de acceso**
-- **Todas las operaciones CRUD son públicas y accesibles para cualquier visitante**
-- **No se requiere login, registro o cualquier forma de autenticación**
-- **La aplicación es completamente abierta - cualquier persona puede crear, editar, ver y eliminar cualquier registro**
+**Aplicación de acceso público:**
+- Todas las operaciones CRUD son públicas y accesibles para cualquier visitante
+- La aplicación es completamente abierta - cualquier persona puede crear, editar, ver y eliminar cualquier registro
 
 ## Criterios de Validación
 - Todas las operaciones CRUD deben ser funcionales
@@ -265,13 +233,10 @@ docker-compose exec web uv add psycopg2-binary  # Librería específica requerid
 - La funcionalidad de carga de imágenes debe funcionar
 - Implementación de diseño responsivo
 - Manejo apropiado de errores y validación
-- Sin sistema de autenticación requerido
+- Acceso público sin restricciones
 
 ## Notas Adicionales
 - **Temática del sitio web**: {{ tipo_tienda }}
 - **Paleta de colores sugerida**: Colores apropiados para el {{ tipo_tienda }} (tonos industriales, azules, grises, naranjas)
-- **Patrón de diseño**: Implementar correctamente el patrón MVC de Django
 - **Contenido visual**: Las imágenes y diseño deben reflejar la estética propia del {{ tipo_tienda }} (herramientas, vehículos, equipos mecánicos)
 
-## Referencias de Desarrollo
-- **Guías de Código Python**: Ver [docs/python-guidelines.md](python-guidelines.md) para estándares de desarrollo y mejores prácticas con Python 3.13+ y Django 5.2+
