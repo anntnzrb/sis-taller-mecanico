@@ -12,8 +12,8 @@ class TrabajadorModelTest(TestCase):
             "nombre": "Juan",
             "apellido": "Pérez",
             "correo": "juan.perez@email.com",
-            "cedula": "12345678",
-            "codigo_empleado": "EMP001",
+            "cedula": "99999999",
+            "codigo_empleado": "TEST001",
         }
 
     def test_create_trabajador_with_valid_data(self):
@@ -22,8 +22,8 @@ class TrabajadorModelTest(TestCase):
         self.assertEqual(trabajador.nombre, "Juan")
         self.assertEqual(trabajador.apellido, "Pérez")
         self.assertEqual(trabajador.correo, "juan.perez@email.com")
-        self.assertEqual(trabajador.cedula, "12345678")
-        self.assertEqual(trabajador.codigo_empleado, "EMP001")
+        self.assertEqual(trabajador.cedula, "99999999")
+        self.assertEqual(trabajador.codigo_empleado, "TEST001")
 
     def test_trabajador_str_method(self):
         """Test string representation of worker"""
@@ -38,7 +38,7 @@ class TrabajadorModelTest(TestCase):
                 nombre="María",
                 apellido="González",
                 correo="maria@email.com",
-                cedula="12345678",  # Same cedula
+                cedula="99999999",  # Same cedula
                 codigo_empleado="EMP002",
             )
 
@@ -51,7 +51,7 @@ class TrabajadorModelTest(TestCase):
                 apellido="González",
                 correo="maria@email.com",
                 cedula="87654321",
-                codigo_empleado="EMP001",  # Same codigo_empleado
+                codigo_empleado="TEST001",  # Same codigo_empleado
             )
 
     def test_get_absolute_url(self):
@@ -77,8 +77,8 @@ class TrabajadorFormTest(TestCase):
             "nombre": "Juan",
             "apellido": "Pérez",
             "correo": "juan.perez@email.com",
-            "cedula": "12345678",
-            "codigo_empleado": "EMP001",
+            "cedula": "99999999",
+            "codigo_empleado": "TEST001",
         }
 
     def test_form_with_valid_data(self):
