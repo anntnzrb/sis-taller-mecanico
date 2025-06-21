@@ -7,6 +7,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from .models import Producto
+from .forms import ProductoForm
 
 
 class ProductoListView(ListView):
@@ -22,14 +23,14 @@ class ProductoDetailView(DetailView):
 
 class ProductoCreateView(CreateView):
     model = Producto
-    fields = ["nombre", "descripcion", "precio", "iva", "imagen"]
+    form_class = ProductoForm
     template_name = "productos/form.html"
     success_url = reverse_lazy("productos:list")
 
 
 class ProductoUpdateView(UpdateView):
     model = Producto
-    fields = ["nombre", "descripcion", "precio", "iva", "imagen"]
+    form_class = ProductoForm
     template_name = "productos/form.html"
     success_url = reverse_lazy("productos:list")
 

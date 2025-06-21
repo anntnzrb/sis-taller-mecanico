@@ -7,6 +7,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from .models import Trabajador
+from .forms import TrabajadorForm
 
 
 class TrabajadorListView(ListView):
@@ -22,14 +23,14 @@ class TrabajadorDetailView(DetailView):
 
 class TrabajadorCreateView(CreateView):
     model = Trabajador
-    fields = ["nombre", "apellido", "correo", "cedula", "codigo_empleado", "imagen"]
+    form_class = TrabajadorForm
     template_name = "trabajadores/form.html"
     success_url = reverse_lazy("trabajadores:list")
 
 
 class TrabajadorUpdateView(UpdateView):
     model = Trabajador
-    fields = ["nombre", "apellido", "correo", "cedula", "codigo_empleado", "imagen"]
+    form_class = TrabajadorForm
     template_name = "trabajadores/form.html"
     success_url = reverse_lazy("trabajadores:list")
 

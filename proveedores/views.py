@@ -7,6 +7,7 @@ from django.views.generic import (
 )
 from django.urls import reverse_lazy
 from .models import Proveedor
+from .forms import ProveedorForm
 
 
 class ProveedorListView(ListView):
@@ -22,14 +23,14 @@ class ProveedorDetailView(DetailView):
 
 class ProveedorCreateView(CreateView):
     model = Proveedor
-    fields = ["nombre", "descripcion", "telefono", "pais", "correo", "direccion"]
+    form_class = ProveedorForm
     template_name = "proveedores/form.html"
     success_url = reverse_lazy("proveedores:list")
 
 
 class ProveedorUpdateView(UpdateView):
     model = Proveedor
-    fields = ["nombre", "descripcion", "telefono", "pais", "correo", "direccion"]
+    form_class = ProveedorForm
     template_name = "proveedores/form.html"
     success_url = reverse_lazy("proveedores:list")
 
