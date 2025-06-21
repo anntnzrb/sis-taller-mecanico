@@ -3,11 +3,15 @@
 {% block title %}Nuestro Personal - Taller Mecánico{% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="text-primary">NUESTRO PERSONAL</h2>
-    <a href="{% url 'trabajadores:create' %}" class="btn btn-primary">
-        <i class="fas fa-plus me-2"></i>AGREGAR TRABAJADOR
-    </a>
+<div class="mb-4">
+    <div class="text-center mb-3">
+        <h2 class="text-primary">NUESTRO PERSONAL</h2>
+    </div>
+    <div class="d-flex justify-content-end">
+        <a href="{% url 'trabajadores:create' %}" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>AGREGAR TRABAJADOR
+        </a>
+    </div>
 </div>
 
 {% if trabajadores %}
