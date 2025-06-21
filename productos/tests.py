@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse
 from decimal import Decimal
 from .models import Producto
+from .forms import ProductoForm
 
 
 class ProductoModelTest(TestCase):
@@ -84,3 +85,83 @@ class ProductoModelTest(TestCase):
         del data['iva']  # Remove IVA to test default
         producto = Producto.objects.create(**data)
         self.assertEqual(producto.iva, 15)
+
+
+class ProductoFormTest(TestCase):
+    def setUp(self):
+        self.valid_form_data = {
+            'nombre': 'Aceite para Motor',
+            'descripcion': 'Aceite sintético 5W-30 para motores de alto rendimiento',
+            'precio': '45.99',
+            'iva': 15
+        }
+
+    def test_form_with_valid_data(self):
+        """Test form validation with valid data"""
+        form = ProductoForm(data=self.valid_form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_form_save_creates_producto(self):
+        """Test that form.save() creates a Producto instance"""
+        form = ProductoForm(data=self.valid_form_data)
+        self.assertTrue(form.is_valid())
+        producto = form.save()
+        self.assertIsInstance(producto, Producto)
+        self.assertEqual(producto.nombre, 'Aceite para Motor')
+
+    def test_form_required_fields(self):
+        """Test that required fields show validation errors"""
+        form = ProductoForm(data={})
+        self.assertFalse(form.is_valid())
+        self.assertIn('nombre', form.errors)
+        self.assertIn('descripcion', form.errors)
+        self.assertIn('precio', form.errors)
+
+    def test_precio_validation_negative(self):
+        """Test precio validation for negative values"""
+        invalid_data = self.valid_form_data.copy()
+        invalid_data['precio'] = '-10.00'
+        form = ProductoForm(data=invalid_data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('precio', form.errors)
+        self.assertIn('negativo', str(form.errors['precio']))
+
+    def test_precio_validation_too_high(self):
+        """Test precio validation for values too high"""
+        invalid_data = self.valid_form_data.copy()
+        invalid_data['precio'] = '1000000.00'
+        form = ProductoForm(data=invalid_data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('precio', form.errors)
+        self.assertIn('demasiado alto', str(form.errors['precio']))
+
+    def test_precio_validation_valid_range(self):
+        """Test precio validation for valid range"""
+        valid_data = self.valid_form_data.copy()
+        valid_data['precio'] = '999999.99'
+        form = ProductoForm(data=valid_data)
+        self.assertTrue(form.is_valid())
+
+    def test_form_widgets_have_css_classes(self):
+        """Test that form widgets have CSS classes"""
+        form = ProductoForm()
+        self.assertIn('form-control', form.fields['nombre'].widget.attrs['class'])
+        self.assertIn('form-control', form.fields['descripcion'].widget.attrs['class'])
+        self.assertIn('form-control', form.fields['precio'].widget.attrs['class'])
+
+    def test_form_labels_in_spanish(self):
+        """Test that form labels are in Spanish"""
+        form = ProductoForm()
+        self.assertEqual(form.fields['nombre'].label, 'Nombre del Producto')
+        self.assertEqual(form.fields['descripcion'].label, 'Descripción')
+        self.assertEqual(form.fields['precio'].label, 'Precio (USD)')
+        self.assertEqual(form.fields['iva'].label, 'IVA')
+
+    def test_iva_choices_in_form(self):
+        """Test that IVA field has correct choices"""
+        form = ProductoForm()
+        iva_choices = form.fields['iva'].choices
+        # Should include the model choices (0, 15)
+        choice_values = [choice[0] for choice in iva_choices if choice[0] != '']
+        self.assertIn(0, choice_values)
+        self.assertIn(15, choice_values)

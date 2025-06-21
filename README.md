@@ -31,17 +31,3 @@ uv run python manage.py runserver
 ```bash
 docker-compose exec web uv run python manage.py test
 ```
-
-## Producción
-```bash
-# Variables de entorno
-export SECRET_KEY=tu-clave-secreta-segura
-export DEBUG=False
-export ALLOWED_HOSTS=tudominio.com
-
-# Despliegue
-pip install gunicorn
-python manage.py migrate
-python manage.py collectstatic
-gunicorn taller_mecanico.wsgi:application --bind 0.0.0.0:8000
-```

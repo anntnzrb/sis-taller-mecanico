@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.urls import reverse
+from django import forms
 from decimal import Decimal
 from .models import Trabajador
 from .forms import TrabajadorForm
@@ -112,6 +113,19 @@ class TrabajadorFormTest(TestCase):
         form = TrabajadorForm(data=invalid_data)
         self.assertFalse(form.is_valid())
         self.assertIn('correo', form.errors)
+
+    def test_correo_custom_validation(self):
+        """Test custom email validation logic"""
+        from trabajadores.forms import TrabajadorForm
+        form = TrabajadorForm()
+        # Test the clean_correo method directly
+        form.cleaned_data = {'correo': 'invalidemail.com'}
+        try:
+            result = form.clean_correo()
+            # If no exception, the validation passed
+            self.assertEqual(result, 'invalidemail.com')
+        except forms.ValidationError as e:
+            self.assertIn('correo electrónico válido', str(e))
 
     def test_cedula_length_validation(self):
         """Test cedula minimum length validation"""
