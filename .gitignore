@@ -15,4 +15,9 @@ staticfiles/
 # Logs
 *.log
 
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+
 .claude/
