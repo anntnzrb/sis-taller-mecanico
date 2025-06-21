@@ -157,12 +157,16 @@ class EmpresaViewTest(TestCase):
 
     def test_empresa_view_without_empresa(self):
         """Test empresa view when no empresa exists"""
+        # Clear all empresas first
+        Empresa.objects.all().delete()
         response = self.client.get(reverse("empresa:nosotros"))
         self.assertEqual(response.status_code, 200)
         self.assertIsNone(response.context["empresa"])
 
     def test_empresa_view_with_empresa(self):
         """Test empresa view when empresa exists"""
+        # Clear existing empresas and create test one
+        Empresa.objects.all().delete()
         empresa = Empresa.objects.create(**self.empresa_data)
         response = self.client.get(reverse("empresa:nosotros"))
         self.assertEqual(response.status_code, 200)

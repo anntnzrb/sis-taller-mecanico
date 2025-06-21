@@ -26,44 +26,60 @@
     <div class="row">
         <!-- Columna Izquierda -->
         <div class="col-md-6">
-            <h2 class="text-primary mb-4">{{ empresa.nombre }}</h2>
-            
-            <div class="mb-3">
-                <strong>RUC:</strong> {{ empresa.ruc }}
+            <!-- Nombre de la empresa -->
+            <div class="mb-4">
+                <h3 class="text-dark mb-1">{{ empresa.nombre|upper }}</h3>
             </div>
             
-            <div class="mb-3">
-                <strong>Dirección:</strong><br>
-                {{ empresa.direccion }}
+            <!-- RUC -->
+            <div class="mb-4">
+                <h5 class="text-muted mb-1">RUC</h5>
+                <p class="mb-0">{{ empresa.ruc }}</p>
             </div>
             
-            {% if empresa.imagen %}
-            <div class="mb-3">
-                <img src="{{ empresa.imagen.url }}" alt="{{ empresa.nombre }}" class="img-fluid rounded" style="max-height: 300px;">
+            <!-- Dirección -->
+            <div class="mb-4">
+                <h5 class="text-muted mb-1">DIRECCIÓN</h5>
+                <p class="mb-0">{{ empresa.direccion|linebreaksbr }}</p>
             </div>
-            {% endif %}
             
-            <div class="mb-3">
-                <strong>Año de Fundación:</strong> {{ empresa.anio_fundacion }}
+            <!-- Logo empresa (circular) -->
+            <div class="mb-3 d-flex justify-content-center">
+                {% load static %}
+                <div class="rounded-circle border d-flex align-items-center justify-content-center"
+                     style="width: 200px; height: 200px; background-color: #343a40; padding: 20px;">
+                    <img src="{% static 'images/logo.png' %}" alt="{{ empresa.nombre }}" 
+                         class="img-fluid" 
+                         style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+            </div>
+            
+            <!-- Año de fundación (centered below logo) -->
+            <div class="mb-4 text-center">
+                <h5 class="text-muted mb-1">AÑO DE FUNDACIÓN</h5>
+                <p class="mb-0">{{ empresa.anio_fundacion }}</p>
             </div>
         </div>
         
         <!-- Columna Derecha -->
         <div class="col-md-6">
+            <!-- Botón editar información (esquina superior derecha) -->
             <div class="text-end mb-4">
-                <a href="{% url 'empresa:update' empresa.pk %}" class="btn btn-outline-primary">
-                    <i class="fas fa-edit me-2"></i>EDITAR INFORMACIÓN
+                <a href="{% url 'empresa:update' empresa.pk %}" class="btn btn-outline-secondary">
+                    EDITAR INFORMACIÓN
                 </a>
             </div>
             
-            <div class="mb-4">
-                <h4 class="text-secondary">Misión</h4>
-                <p class="text-justify">{{ empresa.mision }}</p>
+            <!-- Misión -->
+            <div class="mb-5">
+                <h4 class="text-dark mb-3">MISIÓN</h4>
+                <p class="text-muted">{{ empresa.mision }}</p>
             </div>
             
+            <!-- Visión -->
             <div class="mb-4">
-                <h4 class="text-secondary">Visión</h4>
-                <p class="text-justify">{{ empresa.vision }}</p>
+                <h4 class="text-dark mb-3">VISIÓN</h4>
+                <p class="text-muted">{{ empresa.vision }}</p>
             </div>
         </div>
     </div>
