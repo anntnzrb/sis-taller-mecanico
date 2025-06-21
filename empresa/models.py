@@ -15,7 +15,7 @@ class Empresa(models.Model):
         return self.nombre
 
     def get_absolute_url(self):
-        return reverse("empresa:detail", kwargs={"pk": self.pk})
+        return reverse("empresa:nosotros")
 
     class Meta:
         verbose_name = "Empresa"

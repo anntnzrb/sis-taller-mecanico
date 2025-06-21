@@ -14,7 +14,7 @@ class Trabajador(models.Model):
         return f"{self.nombre} {self.apellido}"
 
     def get_absolute_url(self):
-        return reverse("trabajadores:detail", kwargs={"pk": self.pk})
+        return reverse("trabajadores:list")
 
     class Meta:
         verbose_name = "Trabajador"

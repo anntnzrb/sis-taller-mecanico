@@ -6,56 +6,49 @@ from decimal import Decimal
 
 def add_mock_productos(apps, schema_editor):
     """Add 3 mock productos to the database"""
-    Producto = apps.get_model('productos', 'Producto')
-    
+    Producto = apps.get_model("productos", "Producto")
+
     productos_data = [
         {
-            'nombre': 'Aceite Motor 5W-30',
-            'descripcion': 'Aceite sintético premium para motor, viscosidad 5W-30. Proporciona excelente protección contra el desgaste y mejora el rendimiento del motor.',
-            'precio': Decimal('25.99'),
-            'iva': 15,
-            'imagen': 'productos/aceite_motor.jpg'
+            "nombre": "Aceite Motor 5W-30",
+            "descripcion": "Aceite sintético premium para motor, viscosidad 5W-30. Proporciona excelente protección contra el desgaste y mejora el rendimiento del motor.",
+            "precio": Decimal("25.99"),
+            "iva": 15,
+            "imagen": "productos/aceite_motor.jpg",
         },
         {
-            'nombre': 'Filtro de Aire',
-            'descripcion': 'Filtro de aire de alta calidad universal. Mejora la eficiencia del combustible y protege el motor contra partículas dañinas.',
-            'precio': Decimal('12.50'),
-            'iva': 15,
-            'imagen': 'productos/filtro_aire.jpg'
+            "nombre": "Filtro de Aire",
+            "descripcion": "Filtro de aire de alta calidad universal. Mejora la eficiencia del combustible y protege el motor contra partículas dañinas.",
+            "precio": Decimal("12.50"),
+            "iva": 15,
+            "imagen": "productos/filtro_aire.jpg",
         },
         {
-            'nombre': 'Pastillas de Freno',
-            'descripcion': 'Pastillas de freno delanteras de cerámica. Excelente rendimiento de frenado y menor ruido. Compatible con la mayoría de vehículos.',
-            'precio': Decimal('45.00'),
-            'iva': 15,
-            'imagen': 'productos/pastillas_freno.jpg'
-        }
+            "nombre": "Pastillas de Freno",
+            "descripcion": "Pastillas de freno delanteras de cerámica. Excelente rendimiento de frenado y menor ruido. Compatible con la mayoría de vehículos.",
+            "precio": Decimal("45.00"),
+            "iva": 15,
+            "imagen": "productos/pastillas_freno.jpg",
+        },
     ]
-    
+
     for data in productos_data:
-        Producto.objects.get_or_create(
-            nombre=data['nombre'],
-            defaults=data
-        )
+        Producto.objects.get_or_create(nombre=data["nombre"], defaults=data)
 
 
 def remove_mock_productos(apps, schema_editor):
     """Remove mock productos (reverse migration)"""
-    Producto = apps.get_model('productos', 'Producto')
-    
-    nombres = ['Aceite Motor 5W-30', 'Filtro de Aire', 'Pastillas de Freno']
+    Producto = apps.get_model("productos", "Producto")
+
+    nombres = ["Aceite Motor 5W-30", "Filtro de Aire", "Pastillas de Freno"]
     Producto.objects.filter(nombre__in=nombres).delete()
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('productos', '0001_initial'),
+        ("productos", "0001_initial"),
     ]
 
     operations = [
-        migrations.RunPython(
-            add_mock_productos,
-            remove_mock_productos
-        ),
+        migrations.RunPython(add_mock_productos, remove_mock_productos),
     ]

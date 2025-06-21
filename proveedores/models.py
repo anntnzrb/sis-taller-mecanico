@@ -14,7 +14,7 @@ class Proveedor(models.Model):
         return self.nombre
 
     def get_absolute_url(self):
-        return reverse("proveedores:detail", kwargs={"pk": self.pk})
+        return reverse("proveedores:list")
 
     class Meta:
         verbose_name = "Proveedor"

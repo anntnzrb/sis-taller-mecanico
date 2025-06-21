@@ -62,7 +62,7 @@ class ProductoModelTest(TestCase):
     def test_get_absolute_url(self):
         """Test get_absolute_url method"""
         producto = Producto.objects.create(**self.valid_data)
-        expected_url = reverse("productos:detail", kwargs={"pk": producto.pk})
+        expected_url = reverse("productos:list")
         self.assertEqual(producto.get_absolute_url(), expected_url)
 
     def test_imagen_field_optional(self):

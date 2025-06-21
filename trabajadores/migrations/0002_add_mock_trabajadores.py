@@ -5,67 +5,60 @@ from django.db import migrations
 
 def add_mock_trabajadores(apps, schema_editor):
     """Add 4 mock trabajadores to the database"""
-    Trabajador = apps.get_model('trabajadores', 'Trabajador')
-    
+    Trabajador = apps.get_model("trabajadores", "Trabajador")
+
     trabajadores_data = [
         {
-            'nombre': 'Carlos',
-            'apellido': 'Rodríguez',
-            'correo': 'carlos.rodriguez@tallerprofesional.com',
-            'cedula': '12345678',
-            'codigo_empleado': 'EMP001',
-            'imagen': 'trabajadores/carlos_rodriguez.jpg'
+            "nombre": "Carlos",
+            "apellido": "Rodríguez",
+            "correo": "carlos.rodriguez@tallerprofesional.com",
+            "cedula": "12345678",
+            "codigo_empleado": "EMP001",
+            "imagen": "trabajadores/carlos_rodriguez.jpg",
         },
         {
-            'nombre': 'María',
-            'apellido': 'González',
-            'correo': 'maria.gonzalez@tallerprofesional.com',
-            'cedula': '23456789',
-            'codigo_empleado': 'EMP002',
-            'imagen': 'trabajadores/maria_gonzalez.jpg'
+            "nombre": "María",
+            "apellido": "González",
+            "correo": "maria.gonzalez@tallerprofesional.com",
+            "cedula": "23456789",
+            "codigo_empleado": "EMP002",
+            "imagen": "trabajadores/maria_gonzalez.jpg",
         },
         {
-            'nombre': 'José',
-            'apellido': 'Martínez',
-            'correo': 'jose.martinez@tallerprofesional.com',
-            'cedula': '34567890',
-            'codigo_empleado': 'EMP003',
-            'imagen': 'trabajadores/jose_martinez.jpg'
+            "nombre": "José",
+            "apellido": "Martínez",
+            "correo": "jose.martinez@tallerprofesional.com",
+            "cedula": "34567890",
+            "codigo_empleado": "EMP003",
+            "imagen": "trabajadores/jose_martinez.jpg",
         },
         {
-            'nombre': 'Ana',
-            'apellido': 'López',
-            'correo': 'ana.lopez@tallerprofesional.com',
-            'cedula': '45678901',
-            'codigo_empleado': 'EMP004',
-            'imagen': 'trabajadores/ana_lopez.jpg'
-        }
+            "nombre": "Ana",
+            "apellido": "López",
+            "correo": "ana.lopez@tallerprofesional.com",
+            "cedula": "45678901",
+            "codigo_empleado": "EMP004",
+            "imagen": "trabajadores/ana_lopez.jpg",
+        },
     ]
-    
+
     for data in trabajadores_data:
-        Trabajador.objects.get_or_create(
-            cedula=data['cedula'],
-            defaults=data
-        )
+        Trabajador.objects.get_or_create(cedula=data["cedula"], defaults=data)
 
 
 def remove_mock_trabajadores(apps, schema_editor):
     """Remove mock trabajadores (reverse migration)"""
-    Trabajador = apps.get_model('trabajadores', 'Trabajador')
-    
-    cedulas = ['12345678', '23456789', '34567890', '45678901']
+    Trabajador = apps.get_model("trabajadores", "Trabajador")
+
+    cedulas = ["12345678", "23456789", "34567890", "45678901"]
     Trabajador.objects.filter(cedula__in=cedulas).delete()
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('trabajadores', '0001_initial'),
+        ("trabajadores", "0001_initial"),
     ]
 
     operations = [
-        migrations.RunPython(
-            add_mock_trabajadores,
-            remove_mock_trabajadores
-        ),
+        migrations.RunPython(add_mock_trabajadores, remove_mock_trabajadores),
     ]

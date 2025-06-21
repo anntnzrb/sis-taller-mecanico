@@ -36,7 +36,7 @@ class ProveedorModelTest(TestCase):
     def test_get_absolute_url(self):
         """Test get_absolute_url method"""
         proveedor = Proveedor.objects.create(**self.valid_data)
-        expected_url = reverse("proveedores:detail", kwargs={"pk": proveedor.pk})
+        expected_url = reverse("proveedores:list")
         self.assertEqual(proveedor.get_absolute_url(), expected_url)
 
     def test_meta_verbose_names(self):

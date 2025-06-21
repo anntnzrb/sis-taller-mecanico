@@ -48,7 +48,7 @@ class EmpresaModelTest(TestCase):
     def test_get_absolute_url(self):
         """Test get_absolute_url method"""
         empresa = Empresa.objects.create(**self.valid_data)
-        expected_url = reverse("empresa:detail", kwargs={"pk": empresa.pk})
+        expected_url = reverse("empresa:nosotros")
         self.assertEqual(empresa.get_absolute_url(), expected_url)
 
     def test_imagen_field_optional(self):

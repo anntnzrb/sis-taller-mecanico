@@ -6,7 +6,6 @@ app_name = "productos"
 urlpatterns = [
     path("", views.ProductoListView.as_view(), name="list"),
     path("agregar/", views.ProductoCreateView.as_view(), name="create"),
-    path("<int:pk>/", views.ProductoDetailView.as_view(), name="detail"),
     path("<int:pk>/editar/", views.ProductoUpdateView.as_view(), name="update"),
     path("<int:pk>/eliminar/", views.ProductoDeleteView.as_view(), name="delete"),
 ]

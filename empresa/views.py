@@ -1,6 +1,7 @@
-from django.views.generic import TemplateView, CreateView, UpdateView, DetailView
+from django.views.generic import TemplateView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Empresa
+from .forms import EmpresaForm
 
 
 class EmpresaView(TemplateView):
@@ -14,35 +15,13 @@ class EmpresaView(TemplateView):
 
 class EmpresaCreateView(CreateView):
     model = Empresa
-    fields = [
-        "nombre",
-        "direccion",
-        "mision",
-        "vision",
-        "anio_fundacion",
-        "ruc",
-        "imagen",
-    ]
+    form_class = EmpresaForm
     template_name = "empresa/form.html"
     success_url = reverse_lazy("empresa:nosotros")
 
 
-class EmpresaDetailView(DetailView):
-    model = Empresa
-    template_name = "empresa/detail.html"
-    context_object_name = "empresa"
-
-
 class EmpresaUpdateView(UpdateView):
     model = Empresa
-    fields = [
-        "nombre",
-        "direccion",
-        "mision",
-        "vision",
-        "anio_fundacion",
-        "ruc",
-        "imagen",
-    ]
+    form_class = EmpresaForm
     template_name = "empresa/form.html"
     success_url = reverse_lazy("empresa:nosotros")

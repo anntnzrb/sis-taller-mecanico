@@ -5,72 +5,71 @@ from django.db import migrations
 
 def add_mock_proveedores(apps, schema_editor):
     """Add 6 mock proveedores to the database"""
-    Proveedor = apps.get_model('proveedores', 'Proveedor')
-    
+    Proveedor = apps.get_model("proveedores", "Proveedor")
+
     proveedores_data = [
         {
-            'nombre': 'AutoParts Ecuador',
-            'descripcion': 'Distribuidor oficial de repuestos originales para vehículos Toyota, Nissan y Chevrolet. Especialistas en sistemas de frenos y suspensión.',
-            'telefono': '+593-2-2345678',
-            'pais': 'Ecuador',
-            'correo': 'ventas@autopartsecuador.com',
-            'direccion': 'Av. Amazonas N31-45 y Eloy Alfaro, Quito'
+            "nombre": "AutoParts Ecuador",
+            "descripcion": "Distribuidor oficial de repuestos originales para vehículos Toyota, Nissan y Chevrolet. Especialistas en sistemas de frenos y suspensión.",
+            "telefono": "+593-2-2345678",
+            "pais": "Ecuador",
+            "correo": "ventas@autopartsecuador.com",
+            "direccion": "Av. Amazonas N31-45 y Eloy Alfaro, Quito",
         },
         {
-            'nombre': 'Lubricantes del Pacífico',
-            'descripcion': 'Importador y distribuidor de aceites y lubricantes de primera calidad. Marcas: Castrol, Mobil 1, Shell Helix.',
-            'telefono': '+593-4-2567890',
-            'pais': 'Ecuador',
-            'correo': 'info@lubripacifico.com',
-            'direccion': 'Km 8.5 Vía a Daule, Guayaquil'
+            "nombre": "Lubricantes del Pacífico",
+            "descripcion": "Importador y distribuidor de aceites y lubricantes de primera calidad. Marcas: Castrol, Mobil 1, Shell Helix.",
+            "telefono": "+593-4-2567890",
+            "pais": "Ecuador",
+            "correo": "info@lubripacifico.com",
+            "direccion": "Km 8.5 Vía a Daule, Guayaquil",
         },
         {
-            'nombre': 'Herramientas Técnicas SA',
-            'descripcion': 'Proveedor especializado en herramientas profesionales y equipos de diagnóstico automotriz. Representante de Bosch y Snap-on.',
-            'telefono': '+593-7-2876543',
-            'pais': 'Ecuador',
-            'correo': 'contacto@herramientastecnicas.com',
-            'direccion': 'Calle Larga 7-92 y Borrero, Cuenca'
+            "nombre": "Herramientas Técnicas SA",
+            "descripcion": "Proveedor especializado en herramientas profesionales y equipos de diagnóstico automotriz. Representante de Bosch y Snap-on.",
+            "telefono": "+593-7-2876543",
+            "pais": "Ecuador",
+            "correo": "contacto@herramientastecnicas.com",
+            "direccion": "Calle Larga 7-92 y Borrero, Cuenca",
         },
         {
-            'nombre': 'Neumáticos Continental',
-            'descripcion': 'Distribuidor autorizado de neumáticos Continental, Michelin y Bridgestone. Servicio de balanceado y alineación incluido.',
-            'telefono': '+593-3-2654321',
-            'pais': 'Ecuador',
-            'correo': 'ventas@neumaticoscontinental.ec',
-            'direccion': 'Av. Cevallos 12-85 y Montalvo, Ambato'
+            "nombre": "Neumáticos Continental",
+            "descripcion": "Distribuidor autorizado de neumáticos Continental, Michelin y Bridgestone. Servicio de balanceado y alineación incluido.",
+            "telefono": "+593-3-2654321",
+            "pais": "Ecuador",
+            "correo": "ventas@neumaticoscontinental.ec",
+            "direccion": "Av. Cevallos 12-85 y Montalvo, Ambato",
         },
         {
-            'nombre': 'Sistemas Eléctricos AutoTech',
-            'descripcion': 'Especialistas en sistemas eléctricos y electrónicos automotrices. Baterías, alternadores, motores de arranque y ECUs.',
-            'telefono': '+593-6-2432109',
-            'pais': 'Ecuador',
-            'correo': 'soporte@autotech.ec',
-            'direccion': 'Av. Colombia 14-23 y García Moreno, Ibarra'
+            "nombre": "Sistemas Eléctricos AutoTech",
+            "descripcion": "Especialistas en sistemas eléctricos y electrónicos automotrices. Baterías, alternadores, motores de arranque y ECUs.",
+            "telefono": "+593-6-2432109",
+            "pais": "Ecuador",
+            "correo": "soporte@autotech.ec",
+            "direccion": "Av. Colombia 14-23 y García Moreno, Ibarra",
         },
         {
-            'nombre': 'Filtros y Accesorios Premium',
-            'descripcion': 'Proveedor de filtros de aire, aceite y combustible. Accesorios y repuestos para sistemas de climatización vehicular.',
-            'telefono': '+593-5-2765432',
-            'pais': 'Ecuador',
-            'correo': 'pedidos@filtrospremium.com',
-            'direccion': 'Calle 9 de Octubre 456 y Malecón, Machala'
-        }
+            "nombre": "Filtros y Accesorios Premium",
+            "descripcion": "Proveedor de filtros de aire, aceite y combustible. Accesorios y repuestos para sistemas de climatización vehicular.",
+            "telefono": "+593-5-2765432",
+            "pais": "Ecuador",
+            "correo": "pedidos@filtrospremium.com",
+            "direccion": "Calle 9 de Octubre 456 y Malecón, Machala",
+        },
     ]
-    
+
     for data in proveedores_data:
         Proveedor.objects.create(**data)
 
 
 def remove_mock_proveedores(apps, schema_editor):
     """Remove mock proveedores from the database"""
-    Proveedor = apps.get_model('proveedores', 'Proveedor')
+    Proveedor = apps.get_model("proveedores", "Proveedor")
     # Remove all proveedores (assuming this is test data)
     Proveedor.objects.all().delete()
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("proveedores", "0001_initial"),
     ]

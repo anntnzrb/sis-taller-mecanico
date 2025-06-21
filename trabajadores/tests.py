@@ -57,7 +57,7 @@ class TrabajadorModelTest(TestCase):
     def test_get_absolute_url(self):
         """Test get_absolute_url method"""
         trabajador = Trabajador.objects.create(**self.valid_data)
-        expected_url = reverse("trabajadores:detail", kwargs={"pk": trabajador.pk})
+        expected_url = reverse("trabajadores:list")
         self.assertEqual(trabajador.get_absolute_url(), expected_url)
 
     def test_imagen_field_optional(self):

@@ -1,10 +1,10 @@
 [project]
-name = "sist-cosm"
+name = "sis-taller-mecanico"
 version = "1.0.0"
-description = "Django cosmetics store application with comprehensive CRUD operations"
+description = "Sistema de gestión para taller mecánico con operaciones CRUD completas"
 readme = "README.md"
 authors = [
-    {name = "SPARC Development Team", email = "dev@cosmeticos-store.com"}
+    {name = "Taller Mecánico Team", email = "dev@taller-mecanico.com"}
 ]
 requires-python = ">=3.13"
 
@@ -67,7 +67,7 @@ profile = "black"
 multi_line_output = 3
 line_length = 88
 known_django = "django"
-known_first_party = ["apps", "cosmeticos_store"]
+known_first_party = ["taller_mecanico", "trabajadores", "empresa", "productos", "proveedores"]
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 skip = ["migrations"]
 
@@ -122,7 +122,7 @@ exclude_dirs = ["tests", "migrations"]
 skips = ["B101", "B601"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["apps", "cosmeticos_store"]
+packages = ["taller_mecanico", "trabajadores", "empresa", "productos", "proveedores"]
 
 [tool.uv.workspace]
 members = []

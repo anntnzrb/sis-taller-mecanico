@@ -1300,7 +1300,7 @@ wheels = [
 ]
 
 [[package]]
-name = "sist-cosm"
+name = "sis-taller-mecanico"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [

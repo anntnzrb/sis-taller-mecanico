@@ -1,6 +1,5 @@
 from django.views.generic import (
     ListView,
-    DetailView,
     CreateView,
     UpdateView,
     DeleteView,
@@ -14,11 +13,6 @@ class ProveedorListView(ListView):
     model = Proveedor
     template_name = "proveedores/list.html"
     context_object_name = "proveedores"
-
-
-class ProveedorDetailView(DetailView):
-    model = Proveedor
-    template_name = "proveedores/detail.html"
 
 
 class ProveedorCreateView(CreateView):
