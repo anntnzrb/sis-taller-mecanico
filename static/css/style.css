@@ -14,6 +14,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header Styles */
@@ -168,8 +171,15 @@ header {
     opacity: 0.6;
 }
 
+/* Main Content Wrapper */
+main {
+    flex: 1 0 auto;
+    margin-bottom: 0;
+}
+
 /* Footer Styles */
 footer {
+    flex-shrink: 0;
     margin-top: auto;
 }
 
