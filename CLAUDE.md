@@ -15,6 +15,9 @@
   docker-compose exec <container> <cmd>
   ```
 
+  - **Linter**: `uvx ruff check`
+  - **Formatter**: `uvx ruff format`
+
 ## Restricciones de Implementación
 - **NO** implementar componentes adicionales como nginx, servidores web externos, o tecnologías no especificadas
 - **NO** implementar sistema de usuarios, roles, permisos o autenticación

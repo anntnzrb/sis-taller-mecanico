@@ -23,7 +23,8 @@ class Producto(models.Model):
     @property
     def precio_con_iva(self):
         from decimal import Decimal
-        return self.precio * (Decimal('1') + Decimal(str(self.iva)) / Decimal('100'))
+
+        return self.precio * (Decimal("1") + Decimal(str(self.iva)) / Decimal("100"))
 
     class Meta:
         verbose_name = "Producto"
