@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if form.instance.pk %}Editar{% else %}Agregar{% endif %} Información de la Empresa{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    {% if form.instance.pk %}
+                        <i class="fas fa-edit me-2"></i>Editar Información de la Empresa
+                    {% else %}
+                        <i class="fas fa-plus me-2"></i>Agregar Información de la Empresa
+                    {% endif %}
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
+                            {{ form.nombre.as_widget:form-control }}
+                            {% if form.nombre.errors %}
+                                <div class="text-danger">{{ form.nombre.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.ruc.id_for_label }}" class="form-label">RUC</label>
+                            {{ form.ruc.as_widget:form-control }}
+                            {% if form.ruc.errors %}
+                                <div class="text-danger">{{ form.ruc.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.direccion.id_for_label }}" class="form-label">Dirección</label>
+                        {{ form.direccion.as_widget:form-control }}
+                        {% if form.direccion.errors %}
+                            <div class="text-danger">{{ form.direccion.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.mision.id_for_label }}" class="form-label">Misión</label>
+                        {{ form.mision.as_widget:form-control }}
+                        {% if form.mision.errors %}
+                            <div class="text-danger">{{ form.mision.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.vision.id_for_label }}" class="form-label">Visión</label>
+                        {{ form.vision.as_widget:form-control }}
+                        {% if form.vision.errors %}
+                            <div class="text-danger">{{ form.vision.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.anio_fundacion.id_for_label }}" class="form-label">Año de Fundación</label>
+                            {{ form.anio_fundacion.as_widget:form-control }}
+                            {% if form.anio_fundacion.errors %}
+                                <div class="text-danger">{{ form.anio_fundacion.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.imagen.id_for_label }}" class="form-label">Imagen</label>
+                            {{ form.imagen.as_widget:form-control }}
+                            {% if form.imagen.errors %}
+                                <div class="text-danger">{{ form.imagen.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'empresa:nosotros' %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>
+                            {% if form.instance.pk %}Actualizar{% else %}Guardar{% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

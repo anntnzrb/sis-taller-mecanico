@@ -1,0 +1,22 @@
+# Image Placeholders
+
+This directory should contain the following images for the mechanic shop:
+
+## Required Images:
+- logo.png - Company logo (white/transparent background)
+- taller1.jpg - Workshop image 1 for description carousel
+- taller2.jpg - Workshop image 2 for description carousel  
+- taller3.jpg - Workshop image 3 for description carousel
+- taller4.jpg - Workshop image 4 for description carousel
+- historia1.jpg - Historical image 1 for history carousel
+- historia2.jpg - Historical image 2 for history carousel
+- historia3.jpg - Historical image 3 for history carousel
+- historia4.jpg - Historical image 4 for history carousel
+
+## Image Specifications:
+- Logo: PNG format, transparent background, max 200x50px
+- Carousel images: JPG format, 800x400px recommended
+- Workshop theme: Tools, mechanics, vehicles, equipment
+- Professional quality images preferred
+
+Note: For development, you can use placeholder images or royalty-free images from sources like Unsplash or Pexels.

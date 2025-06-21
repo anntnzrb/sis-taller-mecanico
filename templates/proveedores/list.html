@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuestros Proveedores - Taller Mecánico{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4">
+    <h2 class="text-primary">NUESTROS PROVEEDORES</h2>
+    <a href="{% url 'proveedores:create' %}" class="btn btn-primary mt-3">
+        <i class="fas fa-plus me-2"></i>AGREGAR PROVEEDOR
+    </a>
+</div>
+
+{% if proveedores %}
+    <div class="row">
+        {% for proveedor in proveedores %}
+        <div class="col-md-4 mb-4">
+            <!-- Tarjeta vertical -->
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white text-center">
+                    <h5 class="mb-0">{{ proveedor.nombre }}</h5>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <div class="flex-grow-1">
+                        <div class="mb-2">
+                            <strong>Correo:</strong><br>
+                            <small>{{ proveedor.correo }}</small>
+                        </div>
+                        
+                        <div class="mb-2">
+                            <strong>Teléfono:</strong><br>
+                            <small>{{ proveedor.telefono }}</small>
+                        </div>
+                        
+                        <div class="mb-2">
+                            <strong>País:</strong><br>
+                            <small>{{ proveedor.pais }}</small>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center gap-2 mt-3">
+                        <a href="{% url 'proveedores:update' proveedor.pk %}" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'proveedores:delete' proveedor.pk %}" class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <!-- Estado vacío -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="text-muted mb-3">
+                        <i class="fas fa-truck fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">No hay proveedores registrados</h4>
+                    <p class="card-text">Agregue el primer proveedor al sistema para comenzar.</p>
+                    <a href="{% url 'proveedores:create' %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Agregar Primer Proveedor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

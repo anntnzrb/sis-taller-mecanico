@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuestro Personal - Taller Mecánico{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">NUESTRO PERSONAL</h2>
+    <a href="{% url 'trabajadores:create' %}" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i>AGREGAR TRABAJADOR
+    </a>
+</div>
+
+{% if trabajadores %}
+    <div class="row">
+        {% for trabajador in trabajadores %}
+        <div class="col-md-6 mb-4">
+            <!-- Tarjeta horizontal -->
+            <div class="card h-100">
+                <div class="row g-0 h-100">
+                    <div class="col-md-4">
+                        {% if trabajador.imagen %}
+                            <img src="{{ trabajador.imagen.url }}" class="img-fluid rounded-start h-100" alt="{{ trabajador.nombre }}" style="object-fit: cover;">
+                        {% else %}
+                            <div class="bg-light d-flex align-items-center justify-content-center h-100 rounded-start">
+                                <i class="fas fa-user fa-3x text-muted"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body d-flex flex-column h-100">
+                            <div class="flex-grow-1">
+                                <h5 class="card-title">{{ trabajador.nombre }} {{ trabajador.apellido }}</h5>
+                                <p class="card-text">
+                                    <strong>Correo:</strong> {{ trabajador.correo }}<br>
+                                    <strong>Cédula:</strong> {{ trabajador.cedula }}<br>
+                                    <strong>Código:</strong> {{ trabajador.codigo_empleado }}
+                                </p>
+                            </div>
+                            <div class="text-end">
+                                <a href="{% url 'trabajadores:update' trabajador.pk %}" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'trabajadores:delete' trabajador.pk %}" class="btn btn-outline-danger btn-sm ms-1">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <!-- Estado vacío -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="text-muted mb-3">
+                        <i class="fas fa-users fa-3x"></i>
+                    </div>
+                    <h4 class="card-title">No hay trabajadores registrados</h4>
+                    <p class="card-text">Agregue el primer trabajador al sistema para comenzar.</p>
+                    <a href="{% url 'trabajadores:create' %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Agregar Primer Trabajador
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
