@@ -75,6 +75,7 @@ header {
 .card-header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-bottom: none;
+    color: white;
 }
 
 /* Button Styles */
@@ -87,11 +88,13 @@ header {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border: none;
+    color: white;
 }
 
 .btn-primary:hover {
     background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     transform: translateY(-1px);
+    color: white;
 }
 
 .btn-outline-primary {
