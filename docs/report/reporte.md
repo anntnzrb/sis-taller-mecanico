@@ -10,15 +10,15 @@ El presente trabajo aborda el desarrollo de una solución web integral para la a
 
 La solución se desarrolla utilizando Python y Django como tecnologías principales para el desarrollo de aplicaciones web. El sistema incluye:
 
-- **Gestión de Trabajadores**: Administración completa de información del personal
-- **Catálogo de Productos**: Inventario de repuestos y servicios con cálculos automatizados
-- **Base de Proveedores**: Directorio de contactos comerciales y abastecimiento
-- **Información Empresarial**: Presentación institucional y datos corporativos
+* **Gestión de Trabajadores**: Administración completa de información del personal
+* **Catálogo de Productos**: Inventario de repuestos y servicios con cálculos automatizados
+* **Base de Proveedores**: Directorio de contactos comerciales y abastecimiento
+* **Información Empresarial**: Presentación institucional y datos corporativos
 
 El proyecto implementa una arquitectura basada en:
-- **Backend**: Python y Django como tecnologías principales
-- **Base de Datos**: PostgreSQL para robustez y escalabilidad
-- **Frontend**: Bootstrap para diseño responsivo y presentación moderna
+* **Backend**: Python y Django como tecnologías principales
+* **Base de Datos**: PostgreSQL para robustez y escalabilidad
+* **Frontend**: Bootstrap para diseño responsivo y presentación moderna
 
 ## Objetivos
 
@@ -53,29 +53,29 @@ El proyecto se estructuró en cuatro aplicaciones independientes siguiendo el pr
 ### Patrones de Diseño Implementados
 
 #### Patrón MVC de Django
-- **Models**: Definición de entidades de negocio con validaciones
-- **Views**: Lógica de presentación usando Class-Based Views (CBV)
+* **Models**: Definición de entidades de negocio con validaciones
+* **Views**: Lógica de presentación usando Class-Based Views (CBV)
 
 ### Implementación de la Interfaz de Usuario
 
 La interfaz se desarrolló utilizando Bootstrap, proporcionando:
-- Sistema de grid responsivo para adaptación a múltiples dispositivos
-- Componentes predefinidos para consistencia visual
-- Iconografía Font Awesome para elementos interactivos
-- CSS custom para branding específico del taller mecánico
+* Sistema de grid responsivo para adaptación a múltiples dispositivos
+* Componentes predefinidos para consistencia visual
+* Iconografía Font Awesome para elementos interactivos
+* CSS custom para branding específico del taller mecánico
 
 ### Base de Datos
 
 #### Diseño del Schema
-- Modelos independientes
-- Campos apropiados para cada tipo de dato
-- Indexes automáticos en campos únicos
+* Modelos independientes
+* Campos apropiados para cada tipo de dato
+* Indexes automáticos en campos únicos
 
 #### Migraciones de Datos
 Implementación de data migrations para población inicial:
-- Datos de ejemplo para desarrollo
-- Scripts reversibles para rollback seguro
-- Población condicional para evitar duplicados
+* Datos de ejemplo para desarrollo
+* Scripts reversibles para rollback seguro
+* Población condicional para evitar duplicados
 
 ## Resultados
 
@@ -87,55 +87,55 @@ El desarrollo del Sistema de Taller Mecánico resultó en una aplicación web co
 
 #### 1. Gestión de Trabajadores
 La aplicación cuenta con un módulo completo para la administración del personal que incluye:
-- **Registro de empleados** con información personal completa
-- **Fotografías de perfil** con manejo automático de imágenes
-- **Interfaz visual** con tarjetas horizontales que muestran foto y datos del empleado
-- **Operaciones CRUD** completas con confirmaciones de eliminación
+* **Registro de empleados** con información personal completa
+* **Fotografías de perfil** con manejo automático de imágenes
+* **Interfaz visual** con tarjetas horizontales que muestran foto y datos del empleado
+* **Operaciones CRUD** completas con confirmaciones de eliminación
 
 **Datos de prueba incluidos**: 4 empleados con información completa y fotografías
 
 #### 2. Catálogo de Productos
 El sistema de productos implementa:
-- **Inventario completo** con descripción, precios y especificaciones
-- **Cálculo automático de IVA** (0% o 15%) con precios finales
-- **Gestión de imágenes** para visualización de productos
+* **Inventario completo** con descripción, precios y especificaciones
+* **Cálculo automático de IVA** (0% o 15%) con precios finales
+* **Gestión de imágenes** para visualización de productos
 
 **Datos de prueba incluidos**: 3 productos automotrices con imágenes y precios reales
 
 #### 3. Directorio de Proveedores
 La funcionalidad de proveedores ofrece:
-- **Base de datos de contactos** comerciales y de abastecimiento
-- **Información geográfica** con cobertura nacional
-- **Detalles de contacto** completos incluyendo teléfono, email y dirección
-- **Presentación organizada** con estructura de header-body en las tarjetas
+* **Base de datos de contactos** comerciales y de abastecimiento
+* **Información geográfica** con cobertura nacional
+* **Detalles de contacto** completos incluyendo teléfono, email y dirección
+* **Presentación organizada** con estructura de header-body en las tarjetas
 
 **Datos de prueba incluidos**: 6 proveedores distribuidos en diferentes ciudades de Ecuador
 
 #### 4. Información Empresarial
 El módulo de empresa proporciona:
-- **Página institucional** con misión, visión y datos corporativos
-- **Gestión de logo** corporativo con fondo contrastante
+* **Página institucional** con misión, visión y datos corporativos
+* **Gestión de logo** corporativo con fondo contrastante
 
 #### 5. Navegación y Experiencia de Usuario
 La interfaz de usuario implementa:
-- **Navegación intuitiva** con menú consistente en todas las páginas
-- **Diseño responsivo** que se adapta a dispositivos móviles y desktop
-- **Estados informativos** cuando no hay datos disponibles
-- **Feedback visual** inmediato para todas las operaciones
+* **Navegación intuitiva** con menú consistente en todas las páginas
+* **Diseño responsivo** que se adapta a dispositivos móviles y desktop
+* **Estados informativos** cuando no hay datos disponibles
+* **Feedback visual** inmediato para todas las operaciones
 
 ### Métricas de Éxito
 
 #### Funcionalidad
-- Operaciones CRUD funcionales en todos los módulos
-- Sistema libre de errores críticos
-- Cuatro aplicaciones completamente implementadas
-- Navegación completa entre todas las secciones
+* Operaciones CRUD funcionales en todos los módulos
+* Sistema libre de errores críticos
+* Cuatro aplicaciones completamente implementadas
+* Navegación completa entre todas las secciones
 
 #### Experiencia de Usuario
-- **Diseño responsive** funcional en mobile y desktop
-- **Estados informativos** implementados en todas las secciones
-- **Navegación intuitiva** con indicadores de estado activo
-- **Feedback inmediato** para todas las acciones del usuario
+* **Diseño responsive** funcional en mobile y desktop
+* **Estados informativos** implementados en todas las secciones
+* **Navegación intuitiva** con indicadores de estado activo
+* **Feedback inmediato** para todas las acciones del usuario
 
 ## Conclusiones
 
@@ -155,24 +155,24 @@ La implementación de las cuatro aplicaciones principales (trabajadores, product
 
 #### Funcionalidades Avanzadas
 Aunque el sistema cumple con todos los requerimientos iniciales, existen oportunidades para expansiones futuras:
-- Implementación de reportes y analytics
-- Integración con sistemas de facturación
-- Funcionalidades de calendario para citas y mantenimientos
-- Notificaciones automáticas para seguimiento de clientes
+* Implementación de reportes y analytics
+* Integración con sistemas de facturación
+* Funcionalidades de calendario para citas y mantenimientos
+* Notificaciones automáticas para seguimiento de clientes
 
 #### Optimizaciones de Performance
 Para escenarios de alto tráfico, se podrían implementar:
-- Caching strategies para mejorar tiempos de respuesta
-- Optimización de queries de base de datos
-- CDN para servir assets estáticos
-- Compresión de imágenes automática
+* Caching strategies para mejorar tiempos de respuesta
+* Optimización de queries de base de datos
+* CDN para servir assets estáticos
+* Compresión de imágenes automática
 
 #### Funcionalidades de Seguridad Avanzadas
 Aunque la aplicación es intencionalmente pública, futuras versiones podrían incluir:
-- Audit logs para tracking de cambios
-- Backup automático de datos
-- Rate limiting para prevenir abuse
-- Validaciones adicionales de seguridad
+* Audit logs para tracking de cambios
+* Backup automático de datos
+* Rate limiting para prevenir abuse
+* Validaciones adicionales de seguridad
 
 ### Conclusión Final
 
